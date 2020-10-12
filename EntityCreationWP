@@ -1,0 +1,337 @@
+
+=================== CREATE LIGHTPOSTS FOR MAYLANDS =============================
+
+CREATE (a:post { name: 'Lightpole1', location: 'Maylands', bulbtype: 'LED'})
+CREATE (b:post { name: 'Lightpole2', location: 'Maylands', bulbtype: 'LED'})
+CREATE (c:post { name: 'Lightpole3', location: 'Maylands', bulbtype: 'Halogen'})
+CREATE (d:post { name: 'Lightpole4', location: 'Maylands', bulbtype: 'LED'})
+CREATE (e:post { name: 'Lightpole5', location: 'Maylands', bulbtype: 'LED'})
+CREATE (f:post { name: 'Lightpole6', location: 'Maylands', bulbtype: 'Halogen'})
+CREATE (g:post { name: 'Lightpole7', location: 'Maylands', bulbtype: 'LED'})
+CREATE (h:post { name: 'Lightpole8', location: 'Maylands', bulbtype: 'LED'})
+
+=====================  CREATE LIGHTPOSTS FOR BAYSWATER ===============================
+
+CREATE (i:post { name: 'Lightpole9', location: 'Bayswater', bulbtype: 'LED'})
+CREATE (j:post { name: 'Lightpole10', location: 'Bayswater', bulbtype: 'Halogen'})
+CREATE (k:post { name: 'Lightpole11', location: 'Bayswater', bulbtype: 'Halogen'})
+CREATE (l:post { name: 'Lightpole12', location: 'Bayswater', bulbtype: 'LED'})
+CREATE (m:post { name: 'Lightpole13', location: 'Bayswater', bulbtype: 'LED'})
+CREATE (n:post { name: 'Lightpole14', location: 'Bayswater', bulbtype: 'LED'})
+CREATE (o:post { name: 'Lightpole15', location: 'Bayswater', bulbtype: 'LED'})
+CREATE (p:post { name: 'Lightpole16', location: 'Bayswater', bulbtype: 'Halogen'})
+CREATE (q:post { name: 'Lightpole17', location: 'Bayswater', bulbtype: 'LED'})
+CREATE (r1:post { name: 'Lightpole18', location: 'Bayswater', bulbtype: 'LED'})
+
+======================= CREATE GENERATORS ============================================
+
+CREATE (z6:generator { name: 'CollieGen', location: 'Collie'})
+CREATE (z7:generator { name: 'BlueWaterGen', location: 'Collie'})
+CREATE (z8:generator { name: 'MujaGen', location: 'Collie'})
+
+====================== CREATE TRANSFORMERS ============================================
+
+CREATE (z1:transformer { name: 'BaysTransformer'})
+CREATE (z2:transformer { name: 'MayTransformer'})
+
+===================== CREATE POWERLINE ============================================
+
+CREATE (z3:pwrline { name: 'BaysLine'})
+CREATE (z4:pwrline { name: 'MayLine'})
+
+===================== CREATE INSPECTION LOGS =======================================
+
+CREATE (s:saftey { name: 'InspectionLog1'})
+CREATE (t:saftey { name: 'InspectionLog2'})
+
+====================== CREATE WORKERS =====================================================
+
+//TECHNICIANS + MANAGERS
+CREATE (v:employee { name: 'John', role: 'Technician', workType: 'Full Time'})
+CREATE (w:employee { name: 'Carol', role: 'Technician', workType: 'Full Time'})
+CREATE (x:employee { name: 'Max', role: 'Supervisor', workType: 'Full Time'})
+CREATE (y:employee { name: 'Jean', role: 'Manager', workType: 'Full Time'})
+CREATE (z:employee { name: 'Ben', role: 'Technician', workType: 'Contract'})
+CREATE (z5:employee { name: 'Jess', role: 'Technician', workType: 'Part Time'})
+
+//POWERPLANT WORKERS + MANAGERS
+CREATE (v1:employee { name: 'Jack', role: 'Technician', workType: 'Full Time', location: 'CollieGen'})
+CREATE (v2:employee { name: 'Rob', role: 'Technician', workType: 'Full Time', location: 'CollieGen'})
+CREATE (v3:employee { name: 'Stacy', role: 'Technician', workType: 'Full Time', location: 'CollieGen'})
+CREATE (v4:employee { name: 'Jen', role: 'Technician', workType: 'Full Time', location: 'BlueWaterGen'})
+CREATE (v5:employee { name: 'Matt', role: 'Technician', workType: 'Full Time', location: 'BlueWaterGen'})
+CREATE (v6:employee { name: 'Drew', role: 'Technician', workType: 'Full Time', location: 'BlueWaterGen'})
+CREATE (v7:employee { name: 'Lisa', role: 'Technician', workType: 'Full Time', location: 'MujaGen'})
+CREATE (v8:employee { name: 'Alex', role: 'Technician', workType: 'Full Time', location: 'MujaGen'})
+CREATE (v9:employee { name: 'Ethan', role: 'Technician', workType: 'Full Time', location: 'MujaGen'})
+CREATE (v10:employee { name: 'Jordan', role: 'Supervisor', workType: 'Full Time', location: 'HQ'})
+CREATE (v11:employee { name: 'Sam', role: 'Manager', workType: 'Full Time', location: 'HQ'})
+CREATE (v12:employee { name: 'Josh', role: 'Area Manager', workType: 'Full Time', location: 'HQ'})
+
+
+======================= CREATE RELATIONSHIPS =================================
+--------------------- (ENTER SEPERATLY)----------------------------------
+------------ MAYLANDS LIGHTS AND MAYLANDS TRANSFORMER-----------------------
+
+MATCH (a:post),(z2:transformer)
+WHERE a.name = 'Lightpole1' AND z2.name = 'MayTransformer'
+CREATE (a)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (b:post),(z2:transformer)
+WHERE b.name = 'Lightpole2' AND z2.name = 'MayTransformer'
+CREATE (b)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (c:post),(z2:transformer)
+WHERE c.name = 'Lightpole3' AND z2.name = 'MayTransformer'
+CREATE (c)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (d:post),(z2:transformer)
+WHERE d.name = 'Lightpole4' AND z2.name = 'MayTransformer'
+CREATE (d)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (e:post),(z2:transformer)
+WHERE e.name = 'Lightpole5' AND z2.name = 'MayTransformer'
+CREATE (e)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (f:post),(z2:transformer)
+WHERE f.name = 'Lightpole6' AND z2.name = 'MayTransformer'
+CREATE (f)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (g:post),(z2:transformer)
+WHERE g.name = 'Lightpole7' AND z2.name = 'MayTransformer'
+CREATE (g)-[r:CONNECTED_TO]-> (z2)
+
+MATCH (h:post),(z2:transformer)
+WHERE h.name = 'Lightpole8' AND z2.name = 'MayTransformer'
+CREATE (h)-[r:CONNECTED_TO]-> (z2)
+
+
+---------------- BAYSWATER LIGHTS AND BAYSWATER TRANSFORMER-----------------------------
+MATCH (i:post),(z1:transformer)
+WHERE i.name = 'Lightpole9' AND z1.name = 'BaysTransformer'
+CREATE (i)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (j:post),(z1:transformer)
+WHERE j.name = 'Lightpole10' AND z1.name = 'BaysTransformer'
+CREATE (j)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (k:post),(z1:transformer)
+WHERE k.name = 'Lightpole11' AND z1.name = 'BaysTransformer'
+CREATE (k)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (l:post),(z1:transformer)
+WHERE l.name = 'Lightpole12' AND z1.name = 'BaysTransformer'
+CREATE (l)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (m:post),(z1:transformer)
+WHERE m.name = 'Lightpole13' AND z1.name = 'BaysTransformer'
+CREATE (m)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (n:post),(z1:transformer)
+WHERE n.name = 'Lightpole14' AND z1.name = 'BaysTransformer'
+CREATE (n)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (o:post),(z1:transformer)
+WHERE o.name = 'Lightpole15' AND z1.name = 'BaysTransformer'
+CREATE (o)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (p:post),(z1:transformer)
+WHERE p.name = 'Lightpole16' AND z1.name = 'BaysTransformer'
+CREATE (p)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (q:post),(z1:transformer)
+WHERE q.name = 'Lightpole17' AND z1.name = 'BaysTransformer'
+CREATE (q)-[r:CONNECTED_TO]-> (z1)
+
+MATCH (r1:post),(z1:transformer)
+WHERE r1.name = 'Lightpole18' AND z1.name = 'BaysTransformer'
+CREATE (r1)-[r:CONNECTED_TO]-> (z1)
+
+---------------------------- CREATE TRANSFORMER PWRLINE REL ---------------------------------------
+
+MATCH (z3:pwrline),(z1:transformer)
+WHERE z3.name = 'BaysLine' AND z1.name = 'BaysTransformer'
+CREATE (z3)-[r:CARRIES_POWER_TO]-> (z1)
+
+MATCH (z4:pwrline),(z2:transformer)
+WHERE z4.name = 'MayLine' AND z2.name = 'MayTransformer'
+CREATE (z4)-[r:CARRIES_POWER_TO]-> (z2)
+
+
+----------------------------- CREATE PWRLINE GENERATOR REL ---------------------------------------
+
+MATCH (z4:pwrline),(z6:generator)
+WHERE z4.name = 'MayLine' AND z6.name = 'CollieGen'
+CREATE (z6)-[r:SENDS_POWER_TO]-> (z4)
+
+MATCH (z3:pwrline),(z7:generator)
+WHERE z3.name = 'BaysLine' AND z7.name = 'BlueWaterGen'
+CREATE (z7)-[r:SENDS_POWER_TO]-> (z3)
+
+MATCH (z4:pwrline),(z8:generator)
+WHERE z4.name = 'MayLine' AND z8.name = 'MujaGen'
+CREATE (z8)-[r:SENDS_POWER_TO]-> (z4)
+
+MATCH (z3:pwrline),(z8:generator)
+WHERE z3.name = 'BaysLine' AND z8.name = 'MujaGen'
+CREATE (z8)-[r:SENDS_POWER_TO]-> (z3)
+
+--------------------------- CREATE INSPECTION LOG AND TRANSFORMER REL -----------------------------------
+
+MATCH (z2:transformer),(s:saftey)
+WHERE z2.name = 'MayTransformer' AND s.name = 'InspectionLog1'
+CREATE (z2)-[r:HAS]-> (s)
+
+MATCH (z1:transformer),(t:saftey)
+WHERE z1.name = 'BaysTransformer' AND t.name = 'InspectionLog2'
+CREATE (z1)-[r:HAS]-> (t)
+
+--------------------------- CREATE INSPECTION LOG AND WORKER REL -----------------------------------------
+
+//BAYSWATER
+MATCH (v:employee),(t:saftey)
+WHERE v.name = 'John' AND t.name = 'InspectionLog2'
+CREATE (v)-[r:WORKS_ON]-> (t)
+
+MATCH (w:employee),(t:saftey)
+WHERE w.name = 'Carol' AND t.name = 'InspectionLog2'
+CREATE (w)-[r:WORKS_ON]-> (t)
+
+//MAYLANDS
+
+MATCH (z:employee),(s:saftey)
+WHERE z.name = 'Ben' AND s.name = 'InspectionLog1'
+CREATE (z)-[r:WORKS_ON]-> (s)
+
+MATCH (z5:employee),(s:saftey)
+WHERE z5.name = 'Jess' AND s.name = 'InspectionLog1'
+CREATE (z5)-[r:WORKS_ON]-> (s)
+
+--------------------------- CREATE SUPERVISOR WORKER REL ------------------------------------------
+//INSPECTION WORKERS
+MATCH (x:employee),(v:employee)
+WHERE x.name = 'Max' AND v.name = 'John'
+CREATE (x)-[r:SUPERVISES]-> (v)
+
+MATCH (x:employee),(w:employee)
+WHERE x.name = 'Max' AND w.name = 'Carol'
+CREATE (x)-[r:SUPERVISES]-> (w)
+
+MATCH (x:employee),(z:employee)
+WHERE x.name = 'Max' AND z.name = 'Ben'
+CREATE (x)-[r:SUPERVISES]-> (z)
+
+MATCH (x:employee),(z5:employee)
+WHERE x.name = 'Max' AND z5.name = 'Jess'
+CREATE (x)-[r:SUPERVISES]-> (z5)
+
+//GEN WORKERS
+
+MATCH (v10:employee),(v1:employee)
+WHERE v10.name = 'Jordan' AND v1.name = 'Jack'
+CREATE (v10)-[r:SUPERVISES]-> (v1)
+
+MATCH (v10:employee),(v2:employee)
+WHERE v10.name = 'Jordan' AND v2.name = 'Rob'
+CREATE (v10)-[r:SUPERVISES]-> (v2)
+
+MATCH (v10:employee),(v3:employee)
+WHERE v10.name = 'Jordan' AND v3.name = 'Stacy'
+CREATE (v10)-[r:SUPERVISES]-> (v3)
+
+MATCH (v10:employee),(v4:employee)
+WHERE v10.name = 'Jordan' AND v4.name = 'Jen'
+CREATE (v10)-[r:SUPERVISES]-> (v4)
+
+MATCH (v10:employee),(v5:employee)
+WHERE v10.name = 'Jordan' AND v5.name = 'Matt'
+CREATE (v10)-[r:SUPERVISES]-> (v5)
+
+MATCH (v10:employee),(v6:employee)
+WHERE v10.name = 'Jordan' AND v6.name = 'Drew'
+CREATE (v10)-[r:SUPERVISES]-> (v6)
+
+MATCH (v10:employee),(v7:employee)
+WHERE v10.name = 'Jordan' AND v7.name = 'Lisa'
+CREATE (v10)-[r:SUPERVISES]-> (v7)
+
+MATCH (v10:employee),(v8:employee)
+WHERE v10.name = 'Jordan' AND v8.name = 'Alex'
+CREATE (v10)-[r:SUPERVISES]-> (v8)
+
+MATCH (v10:employee),(v9:employee)
+WHERE v10.name = 'Jordan' AND v9.name = 'Ethan'
+CREATE (v10)-[r:SUPERVISES]-> (v9)
+
+
+----------------------------- CREATE WORKER GEN REL ----------------------------------------------
+//COLLIE GEN
+MATCH (v1:employee),(z6:generator)
+WHERE v1.name = 'Jack' AND z6.name = 'CollieGen'
+CREATE (v1)-[r:WORKS_AT]-> (z6)
+
+MATCH (v2:employee),(z6:generator)
+WHERE v2.name = 'Rob' AND z6.name = 'CollieGen'
+CREATE (v2)-[r:WORKS_AT]-> (z6)
+
+MATCH (v3:employee),(z6:generator)
+WHERE v3.name = 'Stacy' AND z6.name = 'CollieGen'
+CREATE (v3)-[r:WORKS_AT]-> (z6)
+
+//MUJA GEN
+
+MATCH (v7:employee),(z8:generator)
+WHERE v7.name = 'Lisa' AND z8.name = 'MujaGen'
+CREATE (v7)-[r:WORKS_AT]-> (z8)
+
+MATCH (v8:employee),(z8:generator)
+WHERE v8.name = 'Alex' AND z8.name = 'MujaGen'
+CREATE (v8)-[r:WORKS_AT]-> (z8)
+
+MATCH (v9:employee),(z8:generator)
+WHERE v9.name = 'Ethan' AND z8.name = 'MujaGen'
+CREATE (v9)-[r:WORKS_AT]-> (z8)
+
+// BLUEWATER GEN
+
+MATCH (v4:employee),(z7:generator)
+WHERE v4.name = 'Jen' AND z7.name = 'BlueWaterGen'
+CREATE (v4)-[r:WORKS_AT]-> (z7)
+
+MATCH (v5:employee),(z7:generator)
+WHERE v5.name = 'Matt' AND z7.name = 'BlueWaterGen'
+CREATE (v5)-[r:WORKS_AT]-> (z7)
+
+MATCH (v6:employee),(z7:generator)
+WHERE v6.name = 'Drew' AND z7.name = 'BlueWaterGen'
+CREATE (v6)-[r:WORKS_AT]-> (z7)
+
+----------------------------- CREATE MANAGER SUPER REL -----------------------------------------
+
+MATCH (x:employee),(y:employee)
+WHERE x.name = 'Max' AND y.name = 'Jean'
+CREATE (y)-[r:MANAGES]-> (x)
+
+MATCH (v11:employee),(v10:employee)
+WHERE v11.name = 'Sam' AND v10.name = 'Jordan'
+CREATE (v11)-[r:MANAGES]-> (v10)
+
+------------------------------- CREATE AREA MANAGER REL ------------------------------------------
+
+MATCH (v12:employee),(v11:employee)
+WHERE v12.name = 'Josh' AND v11.name = 'Sam'
+CREATE (v12)-[r:MANAGES]-> (v11)
+
+MATCH (v12:employee),(y:employee)
+WHERE v12.name = 'Josh' AND y.name = 'Jean'
+CREATE (v12)-[r:MANAGES]-> (y)
+
+========================= Remove empty nodes that dont have a name associated ===========================
+match (n)
+WHERE NOT (EXISTS (n.name)) //find all nodes with no name property
+with n
+match (n)-[r]-() //find all nodes connected to that node
+delete r,n //delete its relations and then the node itself
+
+
+match (n) return n
