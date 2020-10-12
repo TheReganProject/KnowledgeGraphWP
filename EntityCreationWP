@@ -326,12 +326,28 @@ MATCH (v12:employee),(y:employee)
 WHERE v12.name = 'Josh' AND y.name = 'Jean'
 CREATE (v12)-[r:MANAGES]-> (y)
 
-========================= Remove empty nodes that dont have a name associated ===========================
-match (n)
-WHERE NOT (EXISTS (n.name)) //find all nodes with no name property
-with n
-match (n)-[r]-() //find all nodes connected to that node
-delete r,n //delete its relations and then the node itself
+------------------------------- QUERIES ---------------------------------------------------------
 
+//SHOW POSTS
+match (n:post) return n
 
-match (n) return n
+//SHOW POSTS WITH ONLY LEDS OR HALOGEN
+match (n:post) where n.bulbtype = "<LED/HALOGEN>" return n
+
+//SHOW POSTS THAT RESIDE IN BAYSWATER/MAYLANDS
+match (n:post) where n.location = "<Bayswater/Maylands>" return n
+
+//SHOW WORKER BY ROLE AND FULL TIME WORKTYPE
+match (n:employee) where n.role = "Technician" and n.workType = "Full Time" return n
+
+//LIST WORKERS
+match (n:employee) return n {.name, .workType, .role}
+
+//LIST WORKERS THAT WORK AT COLLIE GEN
+match (n:employee)-[WORKS_AT]-(generator) where generator.name = "CollieGen" return n, generator
+
+//SHOW ALL POSTS CONNECTED TO A TRANSFOMRER
+match (n:post)-[CONNECTED_TO]-(transformer) where transformer.name = "MayTransformer" return n, transformer
+
+//SHOW ALL POSTS CONNECTED TO TRANSFORMER THAT HAVE LED BULBTYPE
+match (n:post)-[CONNECTED_TO]-(transformer) where transformer.name = "MayTransformer" and n.bulbtype = "LED" return n, transformer
